@@ -1,6 +1,6 @@
 {
     "name": "yuntower/yuntower-account-php-sdk",
-    "type": "composer-plugin",
+    "type": "library",
     "version": "0.0.1",
     "license": "MIT",
     "autoload": {
