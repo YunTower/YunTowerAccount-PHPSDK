@@ -1,0 +1,20 @@
+{
+    "name": "yuntower/yuntower-account-php-sdk",
+    "type": "composer-plugin",
+    "version": "0.0.1",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Yuntower\\AccountSDK\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ohhhfish",
+            "email": "xyfishcn@qq.com"
+        }
+    ],
+    "require": {
+      "ext-curl": "*"
+    }
+}
