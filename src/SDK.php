@@ -16,7 +16,7 @@ class SDK
     private string $appid;
     private string $appSecret;
     private Request $request;
-    private string $api_host = 'https://v1.api.account.yuntower.cn/open/v1';
+    private string $api_host = 'https://v1.api.account.yuntower.cn';
 
     public function __construct(string $appid, string $appSecret)
     {
