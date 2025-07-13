@@ -88,4 +88,19 @@ class SDK
             'Authorization' => 'Bearer ' . $access_token
         ]);
     }
+
+    /**
+     * 获取用户第三方账号信息
+     * @param string $access_token
+     * @return array
+     */
+    public function getThirdPartyAccount(string $access_token): array
+    {
+        return $this->request->send($this->api_host . '/user/thirdparty', 'POST', [
+            'appid' => $this->appid,
+            'appsecret' => $this->appSecret
+        ], [
+            'Authorization' => 'Bearer ' . $access_token
+        ]);
+    }
 }

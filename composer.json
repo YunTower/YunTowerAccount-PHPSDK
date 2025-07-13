@@ -1,7 +1,7 @@
 {
     "name": "yuntower/yuntower-account-php-sdk",
     "type": "library",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "license": "MIT",
     "autoload": {
         "psr-4": {
