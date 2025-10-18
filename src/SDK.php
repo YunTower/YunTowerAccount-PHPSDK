@@ -16,7 +16,8 @@ class SDK
     private string $appid;
     private string $appSecret;
     private Request $request;
-    private string $api_host = 'https://v1.api.account.yuntower.com';
+    private string $api_host = 'http://127.0.0.1:8888';
+    // private string $api_host = 'https://v1.api.account.yuntower.com';
 
     public function __construct(string $appid, string $appSecret)
     {
@@ -30,15 +31,13 @@ class SDK
 
     /**
      * 获取用户访问凭证
-     * @param string $token
-     * @param string $tuid
+     * @param string $code 授权码
      * @return array
      */
-    public function getUserToken(string $token, string $tuid): array
+    public function getUserToken(string $code): array
     {
         return $this->request->send($this->api_host . '/user/token/get', 'POST', [
-            'token' => $token,
-            'tuid' => $tuid,
+            'code' => $code,
             'appid' => $this->appid,
             'appsecret' => $this->appSecret
         ]);
@@ -53,9 +52,8 @@ class SDK
     {
         return $this->request->send($this->api_host . '/user/data', 'POST', [
             'appid' => $this->appid,
-            'appsecret' => $this->appSecret
-        ], [
-            'Authorization' => 'Bearer ' . $access_token
+            'appsecret' => $this->appSecret,
+            'access_token' => $access_token
         ]);
     }
 
@@ -68,9 +66,8 @@ class SDK
     {
         return $this->request->send($this->api_host . '/user/token/refresh', 'POST', [
             'appid' => $this->appid,
-            'appsecret' => $this->appSecret
-        ], [
-            'Authorization' => 'Bearer ' . $refresh_token
+            'appsecret' => $this->appSecret,
+            'refresh_token' => $refresh_token
         ]);
     }
 
@@ -83,24 +80,22 @@ class SDK
     {
         return $this->request->send($this->api_host . '/user/logout', 'POST', [
             'appid' => $this->appid,
-            'appsecret' => $this->appSecret
-        ], [
-            'Authorization' => 'Bearer ' . $access_token
+            'appsecret' => $this->appSecret,
+            'access_token' => $access_token
         ]);
     }
 
     /**
-     * 获取用户第三方账号信息
+     * 获取用户关联账号UID
      * @param string $access_token
      * @return array
      */
     public function getThirdPartyAccount(string $access_token): array
     {
-        return $this->request->send($this->api_host . '/user/thirdparty', 'POST', [
+        return $this->request->send($this->api_host . '/user/connect', 'POST', [
             'appid' => $this->appid,
-            'appsecret' => $this->appSecret
-        ], [
-            'Authorization' => 'Bearer ' . $access_token
+            'appsecret' => $this->appSecret,
+            'access_token' => $access_token
         ]);
     }
 }

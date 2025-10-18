@@ -63,6 +63,7 @@ class Request
             curl_setopt($this->curl, CURLOPT_TIMEOUT, 30); // 设置最大执行时间为30秒
             curl_setopt($this->curl, CURLOPT_CONNECTTIMEOUT, 10); // 设置连接等待时间为10秒
             $response = curl_exec($this->curl);
+            // var_dump($response);
             if (!$response) {
                 return ['code' => 500, 'msg' => '无法连接到目标服务器', 'error' => curl_error($this->curl)];
             } else {
