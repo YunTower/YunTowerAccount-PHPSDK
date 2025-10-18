@@ -1,8 +1,6 @@
-# YunTowerAccount-NodeSDK
+# YunTowerAccount-PHPSDK
 
-云塔开放认证平台官方Node SDK   
-
-Apache License 2.0   
+云塔开放认证平台官方PHP SDK   
 
 - 官网：[https://account.yuntower.com](https://account.yuntower.com)   
 - 文档：[https://account.yuntower.com/docs](https://account.yuntower.com/docs)
