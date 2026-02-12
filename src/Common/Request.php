@@ -57,7 +57,18 @@ class Request
 
             curl_setopt($this->curl, CURLOPT_URL, $url);
             if (!empty($data)) {
-                curl_setopt($this->curl, CURLOPT_POSTFIELDS, http_build_query($data));
+                $hasFile = false;
+                foreach ($data as $v) {
+                    if ($v instanceof \CURLFile) {
+                        $hasFile = true;
+                        break;
+                    }
+                }
+                if ($hasFile) {
+                    curl_setopt($this->curl, CURLOPT_POSTFIELDS, $data);
+                } else {
+                    curl_setopt($this->curl, CURLOPT_POSTFIELDS, http_build_query($data));
+                }
             }
             curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($this->curl, CURLOPT_TIMEOUT, 30); // 设置最大执行时间为30秒
